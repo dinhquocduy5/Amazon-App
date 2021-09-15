@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import Header from './components/Header/Header';
+import Home from './components/Home/Home';
 
 function App() {
   return (
@@ -13,11 +14,13 @@ function App() {
         
         <Switch>
           <Route path="/checkout">
+            <Header />
             <h1>Checkout</h1>
           </Route>
+          {/*default route*/}
           <Route path="/">
             <Header />
-            <h1>Hello Home Page</h1>
+            <Home />
           </Route>
         </Switch>
     </div>

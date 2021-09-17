@@ -2,7 +2,7 @@ import React from 'react'
 import './Product.css'
 
 function Product(props) {
-    const {id, title, image, price, rating} = props;
+    const { title, image, price, rating} = props;
     return ( 
         <div className="product">
             <img className="product__image" src={image} alt="" />

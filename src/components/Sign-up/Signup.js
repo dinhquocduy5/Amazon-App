@@ -28,7 +28,7 @@ function Signup() {
                 </form>
                 <button type="submit" className="btn_submit-sign-up" onClick={handleSubmit}>Sign Up</button>
             </div>
-            <p>You had an account ? 
+            <p className="question">You had an account ? 
                 <Link to="/signin" >
                     Log in
                 </Link>

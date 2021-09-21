@@ -4,8 +4,12 @@ import {
   Switch,
   Route,
 } from "react-router-dom";
+
 import Header from './components/Header/Header';
 import Home from './components/Home/Home';
+import Login from './components/Login/Login';
+import Signup from './components/Sign-up/Signup';
+
 
 
 function App() {
@@ -13,17 +17,23 @@ function App() {
   return (
     <Router>
       <div className="App">
-        
         <Switch>
           <Route path="/checkout">
             <Header />
             <h1>Checkout</h1>
+          </Route>
+          <Route path="/signin">
+            <Login />
+          </Route>
+          <Route path="/signup">
+            <Signup />
           </Route>
           {/*default route*/}
           <Route path="/">
             <Header />
             <Home />
           </Route>
+          
         </Switch>
     </div>
     </Router>

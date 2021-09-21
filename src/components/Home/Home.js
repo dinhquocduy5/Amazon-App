@@ -1,15 +1,21 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Home.css'
-import listProduct from '../Product/listProduct'
+import ListProduct from '../Product/ListProduct'
+import Filter from '../Filter/Filter'
+import JSONDATA from "../../MOCK_DATA.json"
 
 
 function Home() {
+    const {searchItem, setSearchItem} = useState("");
+
+    function handleSearch(){
+        
+    }
+
     return (
         <div className="home">
-            <img className="home__image" src="https://m.media-amazon.com/images/I/61CiqVTRBEL._SX3740_.jpg" alt="accesories" />
-            <div className="home__row">
-                <listProduct />
-            </div>     
+            <Filter onSubmit ={handleSearch}/>
+            <ListProduct />       
         </div>
     )
 }

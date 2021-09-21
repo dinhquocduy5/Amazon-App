@@ -8,14 +8,3 @@
     mask-image: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0));
 }
 
-.home__row{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-column-gap: 50px;
-    grid-row-gap: 450px;
-    margin: auto 150px;
-}
-
-Product {
-    
-}

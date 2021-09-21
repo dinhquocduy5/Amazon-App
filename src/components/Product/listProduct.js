@@ -1,45 +1,32 @@
 import React from 'react'
 import { useEffect } from 'react';
 import { useState } from 'react'
-import { db } from '../../firebase';
 import Product from './Product'
+import './Product.css'
+import JSONDATA from "../../MOCK_DATA.json"
 
-function useMovies(){
-    const[movies, setMovies] = useState([]);
+const movies = JSONDATA;
 
-    useEffect(()=>{
-        db
-            .collection('Movies')
-            .onSnapshot((snapshot)=>{
-                const newMovies = snapshot.docs.map((doc)=>({
-                    id : doc.id,
-                    ...doc.data()
-                }))
-                setMovies(newMovies);
-            })
-    })
-    return movies;
-}
-
-async function listProduct() {
-    const movies = useMovies;
+function ListProduct() {
+    
     return (
-        <div>
-
-            {
-                movies.map((data, index) => {
-                    return <Product
-                    key={index}
-                    title = {data.title}
-                    rating = {data.rating}
-                     price = {data.price}
-                     image = {data.img}
-                    />
-                    
-                })
-            }
+        <div className="listProduct">
+            <div className="wrap__list-product">
+                {
+                    movies.map((data, index) => {
+                        return <Product
+                        key={index}
+                        title = {data.name}
+                        rating = {data.rating}
+                        price = {data.price}
+                        image = {data.image}
+                        />
+                    })
+                }
+            </div>
+            
         </div>
     )
 }
 
-export default listProduct
+export default ListProduct

@@ -4,14 +4,16 @@
 
 .product{
     display: grid;
-    grid-row-gap: 5px;
+    grid-row-gap: 7px;
     width :200px;
     height: auto;
-    margin-top:-350px;
+    
 }
 
 .product__title {
-    font-size: 20px;
+    font-size: 22px;
+    height: 50px;
+    overflow: hidden;
 }
 
 .product__image{
@@ -33,4 +35,15 @@
     cursor: pointer;
     width: 100px;
     height: 40px;
+}
+
+
+.wrap__list-product{
+    background-color: #fff;
+    width: 100%;
+    padding: 100px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-column-gap: 50px;
+    grid-row-gap: 450px;
 }

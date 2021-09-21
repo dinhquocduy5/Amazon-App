@@ -22,7 +22,7 @@ function Header() {
 
             {/* Links */}
             <div className="header__nav">
-                <Link to="/login"
+                <Link to="/signin"
                 className="header__link">
                     <div className="header__option">
                         <span className="title__link">Hello Duy,</span>

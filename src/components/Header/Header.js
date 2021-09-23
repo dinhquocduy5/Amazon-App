@@ -1,10 +1,13 @@
-import React from 'react'
+import {React, useContext} from 'react'
 import { Link } from 'react-router-dom'
 import "./Header.css"
 import SearchIcon from "@material-ui/icons/Search"
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
+import { CartContext } from '../Context/CartContext';
+
 function Header() {
+    const [cartItem] = useContext(CartContext);
     return (
         <div className="header">
             {/*logo on the left */}
@@ -42,7 +45,7 @@ function Header() {
             <Link to="/checkout" className="header__link">
             <div className="header__shoppingCart">
                 <ShoppingCartIcon className="header__cartIcon" style={{fontSize: 35}}/>
-                <span className="header__quantity">0</span>
+                <span className="header__quantity">{cartItem.length}</span>
             </div>
             </Link>
         </div>

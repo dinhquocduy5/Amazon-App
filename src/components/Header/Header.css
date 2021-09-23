@@ -3,14 +3,15 @@
     padding: 0.5rem 1rem;
     display: flex;
     align-items: center;
-    position: fixed;
     width: 100%;
     z-index: 99;
+    height: 70px;
 }
 
 .header__logo {
     width: 100px;
-    margin-top: 0.5rem;
+    height: 50px;
+    margin-top: 0.6rem;
     margin-right: 2rem;
 }
 

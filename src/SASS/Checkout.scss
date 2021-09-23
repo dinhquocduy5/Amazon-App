@@ -1,0 +1,74 @@
+img{
+    width: 100px;
+    height: 80px;
+    margin-right:10px;
+}
+
+.checkout {
+    padding: 50px;
+    display: grid;
+    grid-template-columns: 70% 30%;
+}
+
+table{
+    
+}
+
+td{
+    text-align: center;
+}
+
+td:nth-child(2){
+    width: 400px;
+    display: flex;
+}
+
+td:nth-child(3),td:nth-child(4){
+    width: 250px;
+}
+
+th:nth-child(2){
+    width: 400px;
+}
+
+th:nth-child(3), th:nth-child(4){
+    width: 250px;
+}
+
+.total-form {
+    padding: 50px;
+    border: 1px solid #bbb9;
+    border-radius: 20px;
+
+}
+
+.total-form .title{
+    display: flex;
+    justify-content: space-between;
+    margin: 1rem auto;
+}
+
+.total-form .line{
+    width: 100%;
+    height: 1px;
+    border :1px solid #000;
+    margin-top: 1rem;
+    margin-bottom:1rem;
+}
+
+.text-quantity{
+    width: 30px;
+    text-align: center;
+    border:none;
+}
+
+.btn {
+    width: 20px;
+    border:none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+.gradient {
+    margin-bottom: 30px;
+}

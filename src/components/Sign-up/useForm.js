@@ -1,28 +1,30 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { useHistory } from 'react-router';
+import { UserContext } from '../Context/UserContext';
 
 
 const useForm = validate => {
-    const [values, setValue] = useState({
-        username: '',
-        password:'',
-        password2:''
-    })
+    const history = useHistory();
+
+    const [user, setUser] = useContext(UserContext);
 
     const [errors, setErrors] = useState("");
 
     const handleChange = e => {
         const {name, value} = e.target;
-        setValue({
-            ...values,
+        setUser({
+            ...user,
             [name]: value
         })
     }
 
     const handleSubmit = e =>{
         e.preventDefault();
-        setErrors(validate(values))
+        setErrors(validate(user))
+        
+        history.push("/");
     }
-    return {handleChange, values, handleSubmit, errors};
+    return {handleChange, user, handleSubmit, errors};
 }
 
 export default useForm

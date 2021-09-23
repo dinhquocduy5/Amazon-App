@@ -45,5 +45,24 @@
     display: grid;
     grid-template-columns: repeat(4,1fr);
     grid-column-gap: 50px;
-    grid-row-gap: 450px;
+    grid-row-gap: 100px;
+}
+
+.form__filter{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form__option{
+    margin-right: 30px;
+}
+
+.text-name {
+    margin: 0 30px;
+}
+
+.Sort{
+    margin-right: 5px;
 }

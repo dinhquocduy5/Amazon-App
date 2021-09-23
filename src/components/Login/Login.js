@@ -1,24 +1,24 @@
-import React, { useState } from 'react'
+import React, { useContext, useState} from 'react'
 import { Link } from 'react-router-dom'
+import { UserContext } from '../Context/UserContext';
+
+import { useHistory } from 'react-router';
 
 import "./Login.css"
 
 function Login() {
-    const infoLogin = [
-        {user:"dinhquocduy", pass:"1234"}
-    ]
-    const [username, setUsername] = useState([]);
+    const [user] = useContext(UserContext);
 
-    const [password, setPassword] =useState([]);
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
+    const history = useHistory();
 
     function onSubmit(){
-        const [{user, pass}] = infoLogin;
-        if(username === user && password === pass) 
-        {
-            
-        } else {
-            
+        if(user.filter((acc)=>username === acc.username)&&user.filter((acc)=>password === acc.password)){
+            history.push("/");
+        }else{
+            console.log("opps")
         }
     }
 
@@ -31,7 +31,7 @@ function Login() {
                 <h1 className="form__title">Sign In </h1>
                 <form action="/" className="form__box">
                     <label name="username" className="title" >User Name</label>
-                    <input type="text" className="username" placeholder="Enter your username" value={username} onChange={(e)=>setUsername(e.target.value)}/>
+                    <input type="text" className="username" placeholder="Enter your username" value={username} onChange={(e)=>setUsername(e.target.value)} />
                     <label name="password" className="title" >Password</label>
                     <input type="password" className="password" placeholder="Enter your password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
                 </form>

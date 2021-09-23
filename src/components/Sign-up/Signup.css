@@ -51,10 +51,6 @@
     
 }
 
-p{
+.important{
     color: red;
-}
-
-.question{
-    color : black !important;
 }

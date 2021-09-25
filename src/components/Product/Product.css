@@ -5,7 +5,7 @@
 .product{
     display: grid;
     grid-row-gap: 7px;
-    width :200px;
+    width :auto;
     height: auto;
     
 }
@@ -17,7 +17,7 @@
 }
 
 .product__image{
-    width: 100%;
+    width: 200px;
     height: 280px;
     z-index: 1;
 }
@@ -65,4 +65,14 @@
 
 .Sort{
     margin-right: 5px;
+}
+
+.modal-detail{
+    width: 50%;
+    padding: 100px;
+    background-color: #fff;
+}
+
+.hiden{
+    display:none;
 }

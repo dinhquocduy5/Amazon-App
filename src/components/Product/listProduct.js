@@ -20,7 +20,7 @@ function ListProduct() {
                         <option value="A-Z">A-Z</option>
                         <option value="Z-A">Z-A</option>
                     </select>
-                    <label name="Sort by price">Sort by name</label>
+                    <label name="Sort by price">Sort by price</label>
                     <select className="form__option">
                         <option value="low to high">Low to high</option>
                         <option value="high to low">High to low</option>
@@ -36,6 +36,7 @@ function ListProduct() {
                         rating = {data.rating}
                         price = {data.price}
                         image = {data.image}
+                        descrip = {data.descrip}
                         />
                     })
                 }

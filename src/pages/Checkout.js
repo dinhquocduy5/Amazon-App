@@ -4,10 +4,16 @@ import { CartContext } from '../components/Context/CartContext'
 import '../SASS/Checkout.scss'
 
 function Checkout() {
-    const [cartItem, setCartItem] = useContext(CartContext);
+    const [cartItem, setCartItem, onItemClick] = useContext(CartContext);
     const itemPrice = cartItem.reduce((a,c)=>(a+(c.quantity*c.price)),0);
-    const tax = Math.trunc(Math.random()*1+10);
+    const tax = (itemPrice * 0.0878);
     const totalPrice = itemPrice + tax;
+
+    function handleItemClick(data){
+        if(onItemClick){
+            onItemClick(data)
+        }
+    }
 
     return (
         <div class="checkout">
@@ -29,6 +35,7 @@ function Checkout() {
                                 </td>
                                 <td>
                                     <input class="text-quantity" type="text" value={data.quantity}/>
+                                    <button onClick={()=>handleItemClick(data)}>Remove</button>
                                 </td>
                                 <td>${data.price}</td>
                             </tr>

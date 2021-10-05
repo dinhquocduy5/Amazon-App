@@ -6,19 +6,18 @@ import {
 } from "react-router-dom";
 
 import Header from './components/Header/Header';
-import Home from './components/Home/Home';
-import Login from './components/Login/Login';
-import Signup from './components/Sign-up/Signup';
-import CartProvider from './components/Context/CartContext';
+import DefaultLayout from './pages/DefaultLayout';
+import Login from './pages/Login'
+import Signup from './pages/SignUp'
 import Checkout from './pages/Checkout';
-import UserProvider from './components/Context/UserContext';
+
+import CartProvider from './components/Context/CartContext';
+import SearchProvider from './components/Context/SearchContext';
 
 
 function App() {
-  
   return (
     <CartProvider>
-      <UserProvider>
         <Router>
           <div className="App">
             <Switch>
@@ -33,17 +32,15 @@ function App() {
                 <Signup />
               </Route>
               {/*default route*/}
-              <Route path="/">
-                <Header />
-                <Home />
-              </Route>
-              
+              <SearchProvider>
+                <Route path="/">
+                  <DefaultLayout />
+                </Route>
+              </SearchProvider>
             </Switch>
           </div>
         </Router>
-      </UserProvider>
     </CartProvider>
-    
   );
 }
 

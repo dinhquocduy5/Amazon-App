@@ -1,0 +1,27 @@
+.form__footer{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    height: 35vh;
+    background-color: #232F3E;
+}
+
+.wrap-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-amz{
+    width: 300px;
+    height: auto;
+}
+
+.logo-fb{
+    background-image: url("../../assets/image/fb_icon-icons.com_65434.png");
+}
+
+.about-us{
+    color : white;
+    padding: 20px;
+}

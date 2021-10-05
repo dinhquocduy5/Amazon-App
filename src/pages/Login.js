@@ -1,26 +1,32 @@
-import React, { useContext, useState} from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
-import { UserContext } from '../Context/UserContext';
 
 import { useHistory } from 'react-router';
 
-import "./Login.css"
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+
+import "../SASS/Login.scss"
 
 function Login() {
-    const [user] = useContext(UserContext);
-
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const history = useHistory();
 
-    function onSubmit(){
-        if(user.filter((acc)=>username === acc.username)&&user.filter((acc)=>password === acc.password)){
-            history.push("/");
-        }else{
-            console.log("opps")
-        }
+    function Login(){
+        const auth = getAuth();
+        signInWithEmailAndPassword(auth, username, password)
+        .then(() => {
+            // Signed in 
+            history.push("/")
+            // ...
+        })
+        .catch((error) => {
+            const errorCode = error.code;
+            const errorMessage = error.message;
+         });   
     }
+
 
     return (
         <div className="form__login">
@@ -31,11 +37,11 @@ function Login() {
                 <h1 className="form__title">Sign In </h1>
                 <form action="/" className="form__box">
                     <label name="username" className="title" >User Name</label>
-                    <input type="text" className="username" placeholder="Enter your username" value={username} onChange={(e)=>setUsername(e.target.value)} />
+                    <input type="text" className="username" placeholder="Enter your username" value= {username} onChange={(e)=>setUsername(e.target.value)}/>
                     <label name="password" className="title" >Password</label>
-                    <input type="password" className="password" placeholder="Enter your password" value={password} onChange={(e)=>setPassword(e.target.value)}/>
+                    <input type="password" className="password" placeholder="Enter your password" value={password} onChange ={(e)=>setPassword(e.target.value)}/>
                 </form>
-                <button type="submit" className="btn_submit-login" onClick={onSubmit}>Sign In</button>
+                <button type="submit" className="btn_submit-login" onClick={Login}>Sign In</button>
             </div>
             <p className="question">Don't have account ? 
                 <Link to="/signup" >

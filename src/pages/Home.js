@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
-import './Home.css'
-import ListProduct from '../Product/ListProduct'
+import React from 'react'
+import '../SASS/Home.scss'
+import ListProduct from '../components/Product/ListProduct'
 
 
 function Home() {

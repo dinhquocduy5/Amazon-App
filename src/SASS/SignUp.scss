@@ -1,8 +1,10 @@
-.form__login {
+.form__sign-up {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: #3D5A80;
+    height: 100vh;
 }
 
 .form__logo{
@@ -14,7 +16,7 @@
     margin-bottom: 20px;
 }
 
-.box__sign-in{
+.box__sign-up{
     border: 1.5px solid #ddd;
     width: 30%;
     border-radius: 5px;
@@ -25,23 +27,22 @@
     display: grid;
     grid-template-rows: repeat(4, 0.8fr);
     grid-row-gap: 15px;
-    margin-bottom: 10px;
 }
 
-.password, .username{
+.password, .password2 , .username {
     height: 40px;
     outline: none;
     transition: 200ms all;
     margin-top: -8px;
 }
 
-.password:focus, .username:focus{
+.password:focus, .password2:focus, .username:focus{
     
     border: 2px solid #F5D381;
     box-shadow:2px 2px 2px #F4D483;  
 }
 
-.btn_submit-login{
+.btn_submit-sign-up{
     width: 100%;
     margin-top: 30px;
     background-color: #F5D38195;
@@ -52,6 +53,6 @@
     
 }
 
-.btn_submit-login:hover {
-    background-color: #F5D381;
+.important{
+    color: red;
 }

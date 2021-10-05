@@ -1,20 +1,24 @@
 import React from 'react'
-import { useEffect } from 'react';
-import { useState } from 'react'
+import {useContext} from 'react'
 import Product from './Product'
 import './Product.css'
 import JSONDATA from "../../MOCK_DATA.json"
 
-const movies = JSONDATA;
+import { SearchContext} from '../Context/SearchContext';
+
+
 
 function ListProduct() {
-    
+    const movies = JSONDATA;
+
+    const [searchItem] = useContext(SearchContext);
+
+  
     return (
         <div className="listProduct">
             <div className="form__filter">
                 <h2>Sort By :</h2>
                 <form action="/">
-                    <input type="text" className="text-name" placeholder="Search any products..."/>
                     <label name="Sort by name">Sort by name</label>
                     <select className="form__option">
                         <option value="A-Z">A-Z</option>
@@ -29,16 +33,25 @@ function ListProduct() {
             </div>
             <div className="wrap__list-product">
                 {
-                    movies.map((data, index) => {
+                    movies.filter((data) => {
+                        if(searchItem == ""){
+                            return data;
+                        } else if(data.name.toLowerCase().includes(searchItem.toLowerCase())){
+                            return data;
+                        }
+                    }).map((data, index) => {
                         return <Product
-                        key={index}
-                        title = {data.name}
-                        rating = {data.rating}
-                        price = {data.price}
-                        image = {data.image}
-                        descrip = {data.descrip}
-                        />
+                            key={index}
+                            title = {data.name}
+                            rating = {data.rating}
+                            price = {data.price}
+                            image = {data.image}
+                            descrip = {data.descrip}
+                            />
                     })
+                    
+                            
+                    
                 }
             </div>
             

@@ -34,6 +34,10 @@
     border: 3px solid orange;   
 }
 
+.title__link{
+    color: white;
+}
+
 .header__searchIcon {
     background-color: #FEBD69;
     cursor: pointer;

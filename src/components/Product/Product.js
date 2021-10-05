@@ -1,12 +1,14 @@
-import {React, useContext} from 'react'
+import {React, useContext, useState} from 'react'
 import './Product.css'
 
 import { CartContext } from '../Context/CartContext';
-import { Description } from '@material-ui/icons';
+import Modal from 'react-bootstrap/Modal'
+
 
 
 function Product(props) {
     const [cartItem, setCartItem] = useContext(CartContext);
+
 
     const { title, image, price, rating, descrip} = props;
 
@@ -17,15 +19,8 @@ function Product(props) {
 
     return ( 
         <div className="product" >
-            {/* <div className="modal-detail">
-                <img src={image} alt=""></img>
-                <div className="description">
-                    <h1>{title}</h1>
-                    <p>{descrip}</p>
-                </div>
-            </div> */}
             <img className="product__image" src={image} alt="" />
-            <p className="product__title">{title}</p>
+            <p className="product__title" >{title}</p>
             <div className="product__rating">
                 {
                     Array(rating)

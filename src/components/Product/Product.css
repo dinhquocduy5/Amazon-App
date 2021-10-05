@@ -4,10 +4,9 @@
 
 .product{
     display: grid;
-    grid-row-gap: 7px;
-    width :auto;
+    grid-row-gap: 7px ;
+    width :200px;
     height: auto;
-    
 }
 
 .product__title {
@@ -17,7 +16,7 @@
 }
 
 .product__image{
-    width: 200px;
+    width: 100%;
     height: 280px;
     z-index: 1;
 }
@@ -67,12 +66,17 @@
     margin-right: 5px;
 }
 
-.modal-detail{
+
+.modal-detail {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 20px;
     width: 50%;
     padding: 100px;
     background-color: #fff;
 }
 
-.hiden{
-    display:none;
+.modal-detail img{
+    width: 500px;
+    height: 600px;
 }

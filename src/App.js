@@ -17,7 +17,8 @@ import SearchProvider from './components/Context/SearchContext';
 
 function App() {
   return (
-    <CartProvider>
+    <SearchProvider>
+      <CartProvider>
         <Router>
           <div className="App">
             <Switch>
@@ -32,15 +33,16 @@ function App() {
                 <Signup />
               </Route>
               {/*default route*/}
-              <SearchProvider>
+              
                 <Route path="/">
                   <DefaultLayout />
                 </Route>
-              </SearchProvider>
             </Switch>
           </div>
         </Router>
     </CartProvider>
+    </SearchProvider>
+    
   );
 }
 

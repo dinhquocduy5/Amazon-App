@@ -14,7 +14,7 @@ function Checkout() {
             onItemClick(data)
         }
     }
-
+    
     return (
         <div class="checkout">
             <div class="detail__product">

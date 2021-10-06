@@ -18,7 +18,7 @@ function Signup() {
     function SignUp(){
         createUserWithEmailAndPassword(auth, username, password)
         .then(() => {
-            history.push("/signin");
+            history.push("/");
         })
         .catch(() => {
             console.log("Tài khoản đã tồn tại!")

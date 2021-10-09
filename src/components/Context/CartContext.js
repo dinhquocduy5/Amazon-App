@@ -9,7 +9,7 @@ function CartProvider(props) {
     const [cartItem, setCartItem] = useState([]);
 
     function onItemClick(data){
-        const index = cartItem.findIndex(x => x.id === data.id)
+        const index = cartItem.indexOf(data)
         if(index<0) return 0;
 
         const newCartItem = [...cartItem];

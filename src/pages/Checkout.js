@@ -6,7 +6,7 @@ import '../SASS/Checkout.scss'
 function Checkout() {
     const [cartItem, setCartItem, onItemClick] = useContext(CartContext);
     const itemPrice = cartItem.reduce((a,c)=>(a+(c.quantity*c.price)),0);
-    const tax = (itemPrice * 0.0878);
+    const tax = (itemPrice * 0.01);
     const totalPrice = itemPrice + tax;
 
     function handleItemClick(data){
@@ -34,10 +34,10 @@ function Checkout() {
                                 <p>{data.name}</p>
                                 </td>
                                 <td>
-                                    <input class="text-quantity" type="text" value={data.quantity}/>
-                                    <button onClick={()=>handleItemClick(data)}>Remove</button>
+                                    <input className="text-quantity" type="text" value={data.quantity}/>
+                                    <button className="btn-removePro" onClick={()=>handleItemClick(data)}>Remove</button>
                                 </td>
-                                <td>${data.price}</td>
+                                <td>{data.price} VNĐ</td>
                             </tr>
                         ))
                     }
@@ -46,12 +46,13 @@ function Checkout() {
             <div className="wrap-total-form">
                 <div className="total-form">
                     <h1>Detail</h1>
-                    <p className="title sub-total">Subtotal<span>${itemPrice}</span></p>
-                    <p className="title tax">Tax<span>${tax}</span></p>
-                    <p className="title shipping">Shipping<span>$0</span></p>
+                    <p className="title sub-total">Subtotal<span>{itemPrice} VNĐ</span></p>
+                    <p className="title tax">Tax<span>{tax} VNĐ</span></p>
+                    <p className="title shipping">Shipping<span>0 VNĐ</span></p>
                     <div className="line"></div>
-                    <h2 className="title total">Total<span>${totalPrice}</span></h2>
+                    <h2 className="title total">Total<span>{totalPrice} VNĐ</span></h2>
                 </div>
+                <button className="btn-checkOut">Check Out</button>
             </div>
         </div>
     )

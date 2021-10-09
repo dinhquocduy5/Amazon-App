@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom'
 
 import { useHistory } from 'react-router';
 
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-
+import axios from 'axios';
 import "../SASS/Login.scss"
 
 function Login() {
@@ -14,19 +13,17 @@ function Login() {
     const history = useHistory();
 
     function Login(){
-        const auth = getAuth();
-        signInWithEmailAndPassword(auth, username, password)
-        .then(() => {
-            // Signed in 
-            history.push("/")
-            // ...
-        })
-        .catch((error) => {
-            const errorCode = error.code;
-            const errorMessage = error.message;
-         });   
+        axios.post('https://do-an-nganh-nodejs.herokuapp.com/api/auth/login', {
+            email: username,
+            password: password
+          })
+          .then(function (response) {
+            console.log(response);
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
     }
-
 
     return (
         <div className="form__login">

@@ -7,7 +7,6 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { CartContext } from '../Context/CartContext';
 import { SearchContext} from '../Context/SearchContext'
 
-import { getAuth, signOut } from "firebase/auth";
 
 function Header() {
 
@@ -15,15 +14,14 @@ function Header() {
 
     const [searchItem, setSearchItem] = useContext(SearchContext);
 
-    const auth = getAuth();
-    const user = auth.currentUser;
 
     function handleClickSignOut(){
-        signOut(auth).then(() => {
-        // Sign-out successful.
-        }).catch((error) => {
-  // An error happened.
-        });
+        // signOut(auth).then(() => {
+        //     console.log("success")
+        // }).catch((error) => {
+        //     console.log(error)
+        // // An error happened.
+        // });
     }
 
     return (
@@ -44,10 +42,14 @@ function Header() {
             {/* Links */}
             <div className="header__nav">
                     <div className="header__option">
-                        <span className="title__link">Hello {user ? user.email : ", Good morning"}</span>
+                    <span className="title__link">Hello, Good morning</span>
+                    <Link className="link" to="/signin">Sign In</Link>
+                        {/* <span className="title__link">Hello {user ? user.email : ", Good morning"}</span>
                         {
-                            user ? (<Link className="link" to="/" onClick={handleClickSignOut()}>Sign Out</Link>) : (<Link className="link" to="/signin">Sign In</Link>)
-                        }
+                            user ? (<Link className="link" to="/" onClick={handleClickSignOut()}>Sign Out</Link>)
+                            : 
+                            (<Link className="link" to="/signin">Sign In</Link>)
+                        } */}
                     </div>
                 <Link to="/" 
                 className="header__link">

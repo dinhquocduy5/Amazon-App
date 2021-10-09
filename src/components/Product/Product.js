@@ -1,46 +1,39 @@
-import {React, useContext, useState} from 'react'
+import {React, useContext} from 'react'
 import './Product.css'
 
 import { CartContext } from '../Context/CartContext';
-import Modal from 'react-bootstrap/Modal'
+import { Link } from 'react-router-dom';
+
 
 
 
 function Product(props) {
     const [cartItem, setCartItem] = useContext(CartContext);
 
-
-    const { title, image, price, rating, descrip} = props;
+    const {id, title, price, image, description, } = props;
 
     function onSetCartItem(){
         setCartItem((prevItem)=>[...prevItem,{image, name : title, price, quantity : 1}]);
-        
     }
 
     return ( 
-        <div className="product" >
+        <div className="product">
             <img className="product__image" src={image} alt="" />
-            <p className="product__title" >{title}</p>
-            <div className="product__rating">
-                {
-                    Array(rating)
-                    .fill()
-                    .map((_)=>
-                        (<p>⭐</p>)
-                    )
-                }    
-            </div>
+            <Link className="product__title" to={`/product/${id}`}>
+                {title}
+            </Link>
             <p className="product__price">
-                <small>$</small>
                 <strong>{price}</strong>
+                <small> VNĐ</small>
             </p>
             <div className="product__addCart">
                 <button className="product__btnAdd" onClick={onSetCartItem}>
                     Add to Cart
                 </button>
             </div>
-            
+
         </div>
+        
     )
 }
 

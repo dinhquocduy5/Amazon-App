@@ -13,6 +13,8 @@ import Checkout from './pages/Checkout';
 
 import CartProvider from './components/Context/CartContext';
 import SearchProvider from './components/Context/SearchContext';
+import ProductDetail from './pages/ProductDetail';
+import Footer from './components/Footer/Footer';
 
 
 function App() {
@@ -26,6 +28,11 @@ function App() {
                 <Header />
                 <Checkout />
               </Route>
+              <Route exact path="/product/:productID" >
+                <Header />
+                <ProductDetail/>
+                <Footer />
+              </Route>
               <Route path="/signin">
                 <Login />
               </Route>
@@ -34,7 +41,7 @@ function App() {
               </Route>
               {/*default route*/}
               
-                <Route path="/">
+                <Route exact path="/">
                   <DefaultLayout />
                 </Route>
             </Switch>

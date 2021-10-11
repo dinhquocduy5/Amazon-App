@@ -7,6 +7,8 @@ import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { CartContext } from '../Context/CartContext';
 import { SearchContext} from '../Context/SearchContext'
 
+import { useCookies } from 'react-cookie';
+
 
 function Header() {
 
@@ -14,14 +16,13 @@ function Header() {
 
     const [searchItem, setSearchItem] = useContext(SearchContext);
 
+    const [cookies, setCookies, removeCookie] = useCookies(['userID']);
+
 
     function handleClickSignOut(){
-        // signOut(auth).then(() => {
-        //     console.log("success")
-        // }).catch((error) => {
-        //     console.log(error)
-        // // An error happened.
-        // });
+        setTimeout(()=>
+            removeCookie('userID')
+        ,500);
     }
 
     return (
@@ -42,14 +43,12 @@ function Header() {
             {/* Links */}
             <div className="header__nav">
                     <div className="header__option">
-                    <span className="title__link">Hello, Good morning</span>
-                    <Link className="link" to="/signin">Sign In</Link>
-                        {/* <span className="title__link">Hello {user ? user.email : ", Good morning"}</span>
+                        <span className="title__link">Hello {cookies.userID !== undefined ? cookies.userID : ", Good morning"}</span>
                         {
-                            user ? (<Link className="link" to="/" onClick={handleClickSignOut()}>Sign Out</Link>)
+                            cookies.userID !== undefined ? (<Link className="link" to="/" onClick={handleClickSignOut}>Sign Out</Link>)
                             : 
                             (<Link className="link" to="/signin">Sign In</Link>)
-                        } */}
+                        }
                     </div>
                 <Link to="/" 
                 className="header__link">

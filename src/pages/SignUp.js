@@ -38,36 +38,6 @@ function Signup() {
             .then(response => response.text())
             .then(result => console.log(result))
             .catch(error => console.log('error', error));
-        // axios({
-        //     method: 'post',
-        //     url: 'https://do-an-nganh-nodejs.herokuapp.com/api/auth/register',
-        //     headers: {
-        //                 'Content-Type': 'application/x-www-form-urlencoded'
-        //             },
-        //     data: 
-        //         {
-        //             account
-        //         }
-        //   }).then((res)=>console.log(res));
-        // axios.post('https://do-an-nganh-nodejs.herokuapp.com/api/auth/register', formData,
-        // // {
-        // //     email: 'dinhquocduy123@gmail.com',
-        // //     password: password,
-        // //     retypePassword: password2
-        // //   }
-        // //   ,
-        //   {
-        //     headers: {
-        //         'Content-Type': 'application/json'
-        //     }
-        //   }
-        //   )
-        //   .then( (response)=> {
-        //     console.log(response);
-        //   })
-        //   .catch( (error)=> {
-        //     console.log(error);
-        //   });
     }
     
 
@@ -92,7 +62,7 @@ function Signup() {
                 {/* <button type="submit" className="btn_submit-sign-up" onClick={SignUp}>Sign Up</button> */}
             </div>
             <p className="question">You had an account ? 
-                <Link to="/signin" >
+                <Link className="link-direct" to="/signin" >
                     Log in
                 </Link>
             </p>

@@ -5,6 +5,7 @@
     align-items: center;
     background-color: #3D5A80;
     height: 100vh;
+    font-weight: bold;
 }
 
 .form__logo{
@@ -51,9 +52,14 @@
     border: none;
     cursor: pointer;
     font-weight: bold;
-    
+    font-size: 1.5rem;
 }
 
 .btn_submit-login:hover {
     background-color: #F5D381;
+}
+
+.link-direct {
+    color: white;
+    margin-left: 5px;
 }

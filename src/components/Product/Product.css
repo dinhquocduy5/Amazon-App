@@ -39,6 +39,12 @@
     cursor: pointer;
     width: 100px;
     height: 40px;
+    transition: all 300ms;
+}
+
+.product__btnAdd:hover {
+    color : red;
+    font-weight: bold;
 }
 
 

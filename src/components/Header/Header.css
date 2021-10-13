@@ -64,12 +64,21 @@
 }
 
 .title__link {
-    font-size: 13px;
+    font-size: 14px;
 }
 
 .primary__link {
     font-size: 1rem;
     font-weight: bold;
+}
+
+.header__shoppingCart {
+    transition: all 500ms;
+}
+
+.header__shoppingCart:hover {
+    transform: translate(5px, -5px);
+    
 }
 
 .header__cartIcon{
@@ -89,7 +98,8 @@
 
 .link{
   color : white;
-  text-decoration: none;  
+  text-decoration: none;
+  font-weight: bold;  
 }
 
 .link:hover {

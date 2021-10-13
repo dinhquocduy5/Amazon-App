@@ -2,7 +2,6 @@
 import React, { useState} from 'react'
 import { Link, useHistory } from 'react-router-dom'
 import '../SASS/SignUp.scss'
-import axios from 'axios';
 
 function Signup() {
 
@@ -10,11 +9,6 @@ function Signup() {
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
 
-    const account ={
-        'email' : username,
-        'password' : password,
-        'retypePassword' : password2
-    }
 
     const history = useHistory();
     const register = (e)=>{
@@ -35,8 +29,29 @@ function Signup() {
             };
 
             fetch("https://do-an-nganh-nodejs.herokuapp.com/api/auth/register", requestOptions)
-            .then(response => response.text())
-            .then(result => console.log(result))
+            .then(response => response.json())
+            .then(result => 
+                {
+                    const success = document.querySelector('.register-success');
+                    const fail = document.querySelector('.register-fail');
+                    const empty = document.querySelector('.empty-email');
+                    const notMatchPassword = document.querySelector('.confirm-incorrect')
+                    if(username !== "" && password === password2 && result.status === false) {
+                        fail.className += " active"; 
+                    } else if(username !== "" && password === password2 && result.status === true)
+                    {
+                        if(fail.classList.contains("active")) fail.classList.remove("active");
+                        if(empty.classList.contains("active")) fail.classList.remove("active");
+                        if(notMatchPassword.classList.contains("active")) fail.classList.remove("active");
+                        success.className += " active";
+                        setTimeout(()=> history.push("/signin"), 1500);
+                    } else if(username==="") {
+                        empty.className += " active";
+                    } else if(password !== password2) {
+                        notMatchPassword.className += " active";
+                    }
+                }
+            )
             .catch(error => console.log('error', error));
     }
     
@@ -48,6 +63,10 @@ function Signup() {
             </Link>
             <div className="box__sign-up">
                 <h1 className="form__title">Sign Up </h1>
+                <div className="register-success">✅ Register Successfully!</div>
+                <div className="register-fail">❌ Email is exist! Please enter another email</div>
+                <div className="confirm-incorrect">❌ Password does not match!</div>
+                <div className="empty-email">You need enter the email!</div>
                 <form className="form__box" onSubmit={register}>
                     <label htmlFor="username" className="title" >User Name</label>
                     <input name="username" type="text" className="username" placeholder="Enter your username" value={username} onChange={(e)=>setUsername(e.target.value)}/>

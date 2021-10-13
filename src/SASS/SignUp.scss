@@ -13,6 +13,26 @@
     margin-bottom: 20px;
 }
 
+.register-success {
+    color: #80FF7295;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    display: none;
+}
+
+.register-fail, .empty-email, .confirm-incorrect {
+    color: red;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
 .form__title {
     margin-bottom: 20px;
 }
@@ -28,6 +48,7 @@
     display: grid;
     grid-template-rows: repeat(4, 0.8fr);
     grid-row-gap: 15px;
+    margin-top: 15px;
 }
 
 .password, .password2 , .username {

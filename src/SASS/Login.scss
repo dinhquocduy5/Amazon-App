@@ -29,6 +29,7 @@
     grid-template-rows: repeat(4, 0.8fr);
     grid-row-gap: 15px;
     margin-bottom: 10px;
+    margin-top: 15px;
 }
 
 .password, .username{
@@ -53,6 +54,26 @@
     cursor: pointer;
     font-weight: bold;
     font-size: 1.5rem;
+}
+
+.login-success {
+    color: #80FF7295;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    display: none;
+}
+
+.login-fail, .empty-email{
+    color: red;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    display: none;
+}
+
+.active{
+    display: block;
 }
 
 .btn_submit-login:hover {

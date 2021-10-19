@@ -33,21 +33,26 @@ function Login() {
         fetch("https://do-an-nganh-nodejs.herokuapp.com/api/auth/login", requestOptions)
         .then(response => response.json())
         .then(result => {
+            console.log(result)
             const success = document.querySelector('.login-success');
             const fail = document.querySelector('.login-fail');
             const empty = document.querySelector('.empty-email');
             if(username !== "" && result.status === false) {
+                if(fail.classList.contains("active")) fail.classList.remove("active");
+                if(empty.classList.contains("active")) empty.classList.remove("active");
                 fail.className += " active"
             } else if(username !== "" && result.status === true)
                 {
                     if(fail.classList.contains("active")) fail.classList.remove("active");
-                    if(empty.classList.contains("active")) fail.classList.remove("active");
+                    if(empty.classList.contains("active")) empty.classList.remove("active");
                     success.className += " active"
-                    setCookies('userID', result.email,{ path: '/' })
+                    setCookies('userID', result.user._id,{ path: '/' })
                     setTimeout(()=>
                         history.push("/")
                     ,1000);
                 } else if(username==="") {
+                    if(fail.classList.contains("active")) fail.classList.remove("active");
+                    if(empty.classList.contains("active")) empty.classList.remove("active");
                     empty.className += " active"
                 }
             

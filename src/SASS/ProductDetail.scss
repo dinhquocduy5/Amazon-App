@@ -1,3 +1,8 @@
+.wrapper-form {
+    background: rgb(207,140,228);
+    background: radial-gradient(circle, rgba(207,140,228,0.9867297260701156) 0%, rgba(93,210,183,1) 100%);
+}
+
 .form__pro-detail{
     display: flex;
     flex-direction: row;
@@ -46,6 +51,9 @@
     margin-top: 20px;
 }
 
+.description {
+    font-size: 1.2rem;
+}
 .product-price h2{
     display: inline;
 }
@@ -65,6 +73,75 @@
     margin-top: 30px;
 }
 
+.wrapper-comment {
+    width: 100%;
+    padding: 2rem;
+    margin-top: -8rem;
+}
+
+.wrapper-comment .comments {
+    width: 50%;
+    background-color: #fff;
+    height: 400px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    padding: 20px;
+}
+
+.wrapper-comment .comments tr {
+    display: grid;
+    grid-template-columns: 30% 70%;
+}
+
+.avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background-position: center;
+    margin-left: 20px;
+}
+
+.date-time {
+    font-size: 14px;
+    color: #aaa;
+
+}
+.wrapper-comment .comments td:nth-child(2){
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 10px;
+    margin-left: -10px;
+}
+
+.wrapper-comment .form-input {
+    display: flex;
+    flex-direction: column;
+}
+
+.wrapper-comment .text {
+    height: 100px;
+    width: 50%;
+    outline: none;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.wrapper-comment .comment {
+    margin-top: 10px;
+    width: 100px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background-color: #63D471;
+    color: #f1f1f1;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+}
 /* width */
 ::-webkit-scrollbar {
     width: 10px;

@@ -13,44 +13,45 @@ function ListProduct() {
 
     const [searchItem] = useContext(SearchContext);
 
-    const handleSortByName = () => {
+    function handleSortByName() {
         let select = document.getElementById("SBName").value;
         if(select === "A-Z") setMovies(movies.sort(function(a, b) {
             var nameA = a.name.toUpperCase();
             var nameB = b.name.toUpperCase(); 
             if (nameA < nameB) {
-              return -1;
+                return -1;
             }
             if (nameA > nameB) {
-              return 1;
+                return 1;
             }
-          
+              
             // names must be equal
             return 0;
-          })
-          );
-
+            })
+            );
+    
         if(select === "Z-A") setMovies(movies.sort(function(a, b) {
             var nameA = a.name.toUpperCase();
             var nameB = b.name.toUpperCase(); 
             if (nameA < nameB) {
-              return 1;
+                return 1;
             }
             if (nameA > nameB) {
-              return -1;
+                return -1;
             }
-          
+              
             // names must be equal
-            return 0;
-          })
-          );
+                return 0;
+            })
+        );
     }
-
-    const handleSortByPrice = () => {
+    
+    function handleSortByPrice() {
         let select = document.getElementById("SBPrice").value;
         if(select === "low to high") setMovies(movies.sort((a,b) => a.price-b.price));
         if(select === "high to low") setMovies(movies.sort((a,b) => b.price-a.price)); 
     }
+
 
     useEffect(()=>{
         async function fetchData(){

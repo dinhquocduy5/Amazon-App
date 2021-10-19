@@ -1,6 +1,6 @@
 import React from 'react'
 import '../SASS/Home.scss'
-import ListProduct from '../components/Product/ListProduct'
+import ListProduct from '../components/Product/listProduct'
 
 
 function Home() {

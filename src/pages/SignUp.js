@@ -37,17 +37,27 @@ function Signup() {
                     const empty = document.querySelector('.empty-email');
                     const notMatchPassword = document.querySelector('.confirm-incorrect')
                     if(username !== "" && password === password2 && result.status === false) {
+                        if(fail.classList.contains("active")) fail.classList.remove("active");
+                        if(empty.classList.contains("active")) empty.classList.remove("active");
+                        if(notMatchPassword.classList.contains("active")) notMatchPassword.classList.remove("active");
                         fail.className += " active"; 
+                        
                     } else if(username !== "" && password === password2 && result.status === true)
                     {
                         if(fail.classList.contains("active")) fail.classList.remove("active");
-                        if(empty.classList.contains("active")) fail.classList.remove("active");
-                        if(notMatchPassword.classList.contains("active")) fail.classList.remove("active");
+                        if(empty.classList.contains("active")) empty.classList.remove("active");
+                        if(notMatchPassword.classList.contains("active")) notMatchPassword.classList.remove("active");
                         success.className += " active";
                         setTimeout(()=> history.push("/signin"), 1500);
                     } else if(username==="") {
+                        if(fail.classList.contains("active")) fail.classList.remove("active");
+                        if(empty.classList.contains("active")) empty.classList.remove("active");
+                        if(notMatchPassword.classList.contains("active")) notMatchPassword.classList.remove("active");
                         empty.className += " active";
                     } else if(password !== password2) {
+                        if(fail.classList.contains("active")) fail.classList.remove("active");
+                        if(empty.classList.contains("active")) fail.classList.remove("active");
+                        if(notMatchPassword.classList.contains("active")) notMatchPassword.classList.remove("active");
                         notMatchPassword.className += " active";
                     }
                 }

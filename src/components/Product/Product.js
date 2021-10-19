@@ -16,6 +16,10 @@ function Product(props) {
         Aos.init({duration : 1500})
     ,[]);
 
+    const numberWithCommas = (number) => {
+        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
+    }
+
     function onSetCartItem(){
         setCartItem((prevItem)=>[...prevItem,{image, name : title, price, quantity : 1}]);
     }
@@ -27,7 +31,7 @@ function Product(props) {
                 {title}
             </Link>
             <p className="product__price">
-                <strong>{price}</strong>
+                <strong>{numberWithCommas(price)}</strong>
                 <small> VNĐ</small>
             </p>
             <div className="product__addCart">

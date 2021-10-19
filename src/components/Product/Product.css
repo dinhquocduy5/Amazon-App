@@ -49,7 +49,6 @@
 
 
 .wrap__list-product{
-    background-color: #fff;
     width: 100%;
     padding: 100px;
     display: grid;
@@ -75,5 +74,10 @@
 
 .Sort{
     margin-right: 5px;
+}
+
+.listProduct {
+    background: rgb(145,26,182);
+    background: radial-gradient(circle, rgba(145,26,182,0.9867297260701156) 0%, rgba(111,26,255,0.7066176812521884) 100%);
 }
 

@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import '../node_modules/font-awesome/css/font-awesome.min.css';
 
 import { CookiesProvider } from 'react-cookie';
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;1,300&display=swap');
+</style>
 
 ReactDOM.render(
   <React.StrictMode>

@@ -1,0 +1,103 @@
+.form-edit {
+    width: 100%;
+    height: 100vh;;
+    display: grid;
+    grid-template-columns: 25% 75%;
+    padding: 5rem;
+}
+
+.form-left {
+    border-right: 1px solid #aaa8;
+}
+
+.form-left .title-form-edit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100px;
+}
+
+.form-right {
+    padding: 50px 100px ;
+    width: 100%;
+}
+
+.summary-info {
+    display: flex;
+    margin-bottom: 3rem;
+}
+
+.summary-info .info-user {
+    padding: 1.5rem;
+}
+
+.info-user .full-name {
+    font-weight: bold;
+}
+
+.info-user .live-in {
+    font-size: 13px;
+    color: #aaa;
+    margin-top: 0.3rem;
+}
+
+.image-user {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-position: center;
+    box-shadow: 1px 0px 15px 3px #FF773350;
+}
+
+.wrapper-info {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 2rem;
+}
+
+.ingredient-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.ingredient-info .input-info {
+    width: 230px;
+    text-align: center;
+    height: 30px;
+    border: 0.8px solid #aaa;
+    border-radius:5px ;
+    font-family: 'Roboto';
+    font-weight: 600;
+    outline: none;
+    transition: 300ms all;
+}
+
+.ingredient-info .input-info:focus {
+    box-shadow: 0.5px 0.5px 3px 2px #aaa9;
+}
+
+.ingredient-info .title-of-ingredient {
+    font-size: 14px;
+    margin-left: 0.5rem;
+    color: #0009;
+    font-weight: bold;
+    margin-bottom: 0.3rem;
+}
+
+.save-changes {
+    width: 170px;
+    height: 35px;
+    color: white;
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    background-color: #FF7733;
+    margin: 3rem 15rem;
+    transition: 500ms all;
+}
+
+.save-changes:hover {
+    box-shadow: 0px 3px 1.5px 1px #FF773380;
+    transform: translate(0px,-3px);
+}

@@ -73,7 +73,7 @@ function ProductDetail(props) {
         <div className="wrapper-form">
             <div className="form__pro-detail">
             <button className="back" onClick={handleBack}>Back</button>
-            <div className="info">
+            <div className="info-product">
                 <div className="image">
                     <img className="image-product" src={product.image} alt="" />
                 </div>

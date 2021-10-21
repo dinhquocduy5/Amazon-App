@@ -46,7 +46,7 @@ function Login() {
                     if(fail.classList.contains("active")) fail.classList.remove("active");
                     if(empty.classList.contains("active")) empty.classList.remove("active");
                     success.className += " active"
-                    setCookies('userID', result.user._id,{ path: '/' })
+                    setCookies('userID', result.user._id)
                     setTimeout(()=>
                         history.push("/")
                     ,1000);

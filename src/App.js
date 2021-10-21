@@ -15,6 +15,7 @@ import CartProvider from './components/Context/CartContext';
 import SearchProvider from './components/Context/SearchContext';
 import ProductDetail from './pages/ProductDetail';
 import Footer from './components/Footer/Footer';
+import EditProfile from './pages/EditProfile';
 
 
 function App() {
@@ -33,14 +34,16 @@ function App() {
                 <ProductDetail/>
                 <Footer />
               </Route>
-              <Route path="/signin">
+              <Route exact path="/signIn">
                 <Login />
               </Route>
-              <Route path="/signup">
+              <Route exact path="/signUp">
                 <Signup />
               </Route>
+              <Route exact path="/editinfo">
+                <EditProfile />
+              </Route>
               {/*default route*/}
-              
                 <Route exact path="/">
                   <DefaultLayout />
                 </Route>

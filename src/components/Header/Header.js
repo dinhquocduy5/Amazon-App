@@ -47,7 +47,7 @@ function Header() {
                         {
                             cookies.userID !== undefined ? (<Link className="link" to="/" onClick={handleClickSignOut}>Sign Out</Link>)
                             : 
-                            (<Link className="link" to="/signin">Sign In</Link>)
+                            (<Link className="link" to="/signIn">Sign In</Link>)
                         }
                     </div>
                 <Link to="/" 

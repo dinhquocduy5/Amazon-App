@@ -18,10 +18,15 @@ function Header() {
 
     const [cookies, setCookies, removeCookie] = useCookies(['userID']);
 
+    let queryParameters = {
+        userID : cookies.userID
+    }
+
 
     function handleClickSignOut(){
         setTimeout(()=>
-            removeCookie('userID')
+            removeCookie('userID'),
+            removeCookie('email')
         ,500);
     }
 
@@ -43,9 +48,19 @@ function Header() {
             {/* Links */}
             <div className="header__nav">
                     <div className="header__option">
-                        <span className="title__link">Hello {cookies.userID !== undefined ? cookies.userID : ", Good morning"}</span>
+                        <span className="title__link">Hi, Good morning!</span>
                         {
-                            cookies.userID !== undefined ? (<Link className="link" to="/" onClick={handleClickSignOut}>Sign Out</Link>)
+                            cookies.userID !== undefined ? (
+                                <ul className="navbar-user">
+                                    <li className="username">
+                                        <a className="email-user" href="#">{cookies.email}</a>
+                                        <ul className="list-item">
+                                            <li className="item"><Link className="link" to={{pathname: '/editInfo', query: queryParameters}}>Edit Profile</Link></li>
+                                            <li className="item"><Link className="link" to="/" onClick={handleClickSignOut}>Log Out</Link></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            )
                             : 
                             (<Link className="link" to="/signIn">Sign In</Link>)
                         }

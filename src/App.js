@@ -41,12 +41,13 @@ function App() {
                 <Signup />
               </Route>
               <Route exact path="/editinfo">
+                <Header />
                 <EditProfile />
               </Route>
               {/*default route*/}
-                <Route exact path="/">
-                  <DefaultLayout />
-                </Route>
+              <Route exact path="/">
+                <DefaultLayout />
+              </Route>
             </Switch>
           </div>
         </Router>

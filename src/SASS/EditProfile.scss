@@ -3,11 +3,28 @@
     height: 100vh;;
     display: grid;
     grid-template-columns: 25% 75%;
-    padding: 5rem;
+    padding: 0px 5rem;
 }
 
 .form-left {
-    border-right: 1px solid #aaa8;
+    
+}
+
+.wrapper-feature {
+    width: 100%;
+    border-right: 3px solid #FF7733;
+}
+
+.icon-user {
+    color: black;
+    margin-bottom: -0.6rem;
+}
+
+.user-info-feature {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    margin-left: 0.5rem;
 }
 
 .form-left .title-form-edit {
@@ -21,12 +38,14 @@
 .form-right {
     padding: 50px 100px ;
     width: 100%;
+    border-left: 1px solid #aaa8;
 }
 
 .summary-info {
     display: flex;
     margin-bottom: 3rem;
 }
+
 
 .summary-info .info-user {
     padding: 1.5rem;
@@ -48,6 +67,24 @@
     border-radius: 50%;
     background-position: center;
     box-shadow: 1px 0px 15px 3px #FF773350;
+}
+.input-image {
+    display: none;
+}
+
+.custom-file-upload {
+    position: absolute;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    padding: 10px 10px;
+    cursor: pointer;
+    margin-top: 3.8rem;
+    margin-left: 3.8rem;
+    background-image: url(../assets/image/1485477179-pen_78607.png);
+    background-position: center;
+    background-size: 20px;
+    background-color: white;
 }
 
 .wrapper-info {
@@ -94,7 +131,7 @@
     border-radius: 5px;
     background-color: #FF7733;
     margin: 3rem 15rem;
-    transition: 500ms all;
+    transition: 300ms all;
 }
 
 .save-changes:hover {

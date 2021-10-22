@@ -60,6 +60,7 @@
 .header__option {
     display: flex;
     flex-direction: column;
+    margin-top: 5px;
     padding: 10px;
 }
 
@@ -98,10 +99,46 @@
 
 .link{
   color : white;
-  text-decoration: none;
-  font-weight: bold;  
+  text-decoration: none; 
 }
 
 .link:hover {
-    color: red;
+    color: white;
+}
+
+.navbar-user{
+    margin-top: 1rem;
+    list-style: none;
+}
+
+.list-item {
+    display: none;
+    list-style: none;
+}
+
+.item {
+    background-color: #000;
+    text-align: center;
+    padding: 0.5rem 0px;
+    border-bottom: 1px solid #aaa;
+    cursor: pointer;
+}
+
+.item:hover {
+    background-color: #bbb;
+}
+
+
+
+.email-user {
+    text-decoration: none;
+    color: white;
+}
+
+.username {
+    position: relative;
+}
+
+.username:hover .list-item {
+    display: block;
 }

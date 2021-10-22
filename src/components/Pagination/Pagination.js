@@ -1,24 +1,24 @@
 import React from 'react'
 import './Pagination.css'
+import { useState, useEffect} from 'react'
 
-const Pagination =({moviesPerPage, totalMovies, paginate}) =>{
-    const pageNumbers = [];
-
-    for (let i = 1; i <= Math.ceil(totalMovies / moviesPerPage); i++){
-        pageNumbers.push(i);
-    }
+const Pagination =({totalPage}) =>{
+    const [pages, setPages] = useState([])
+    
+    useEffect(() => {
+        let temp = []
+        for(let i = 1;i <= totalPage; i++ ) temp.push(i)
+        console.log(temp)
+        setPages(temp)
+    }, [])
     return (
         <nav>
             <ul className="pagination">
-                {
-                    pageNumbers.map(number=>(
-                        <li key={number} className="page-item">
-                            <a onClick = {()=> paginate(number)} href='!#' className="page-link">
-                                {number}
-                            </a>
-                        </li>
-                    ))
-                }
+                  {
+                      pages.map((page) => (
+                          <li key={page}><a>{page}</a></li>
+                      ))
+                  }
             </ul>
         </nav>
     )

@@ -53,7 +53,7 @@ function Header() {
                             cookies.userID !== undefined ? (
                                 <ul className="navbar-user">
                                     <li className="username">
-                                        <a className="email-user" href="#">{cookies.email}</a>
+                                        <a className="email-user" >{cookies.email}</a>
                                         <ul className="list-item">
                                             <li className="item"><Link className="link" to={{pathname: '/editInfo', query: queryParameters}}>Edit Profile</Link></li>
                                             <li className="item"><Link className="link" to="/" onClick={handleClickSignOut}>Log Out</Link></li>

@@ -9,12 +9,14 @@ function CartProvider(props) {
     const [cartItem, setCartItem] = useState([]);
 
     function onItemClick(data){
-        const index = cartItem.indexOf(data)
-        if(index<0) return 0;
-
-        const newCartItem = [...cartItem];
-        newCartItem.splice(index, 1);
-        setCartItem(newCartItem);
+        const findProduct = cartItem.findIndex(dt => dt === data);
+        const quantity = cartItem[findProduct].quantity -= 1;
+        const price = cartItem[findProduct].price*quantity;
+        if(quantity===0){
+            const newProduct = cartItem.splice(cartItem[findProduct],1)
+            const newCartItem = cartItem.map(obj => newProduct.find(o=>o.name===obj.name) || obj);
+            setCartItem(newCartItem);
+        }
     }
 
     return (

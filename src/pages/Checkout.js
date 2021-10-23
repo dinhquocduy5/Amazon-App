@@ -12,15 +12,15 @@ function Checkout() {
     const numberWithCommas = (number) => {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
     }
-    function handleItemClick(data){
+    function handleMinusQuantity(data){
         if(onItemClick){
             onItemClick(data)
         }
     }
     
     return (
-        <div class="checkout">
-            <div class="detail__product">
+        <div className="checkout">
+            <div className="detail__product">
                 <h1>Check Out</h1>
                 <table>
                     <tr>
@@ -31,14 +31,15 @@ function Checkout() {
                     </tr>
                     {
                         cartItem.map((data, index)=>(
-                            <tr class="gradient">
+                            <tr className="gradient">
                                 <td>{index+1}</td>
                                 <td><img src={data.image} alt="" />
                                 <p>{data.name}</p>
                                 </td>
                                 <td>
+                                    <button className="btn-editQuantity" onClick={()=>handleMinusQuantity(data)}>-</button>
                                     <input className="text-quantity" type="text" value={data.quantity}/>
-                                    <button className="btn-removePro" onClick={()=>handleItemClick(data)}>Remove</button>
+                                    <button className="btn-editQuantity">+</button>
                                 </td>
                                 <td>{numberWithCommas(data.price)} VNĐ</td>
                             </tr>

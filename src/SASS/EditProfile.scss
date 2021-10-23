@@ -6,9 +6,6 @@
     padding: 0px 5rem;
 }
 
-.form-left {
-    
-}
 
 .wrapper-feature {
     width: 100%;
@@ -79,7 +76,7 @@
     display: inline-block;
     padding: 10px 10px;
     cursor: pointer;
-    margin-top: 3.8rem;
+    margin-top: 4rem;
     margin-left: 3.8rem;
     background-image: url(../assets/image/1485477179-pen_78607.png);
     background-position: center;
@@ -130,8 +127,9 @@
     border: none;
     border-radius: 5px;
     background-color: #FF7733;
-    margin: 3rem 15rem;
     transition: 300ms all;
+    margin-top: 7rem;
+    margin-left: -11rem;
 }
 
 .save-changes:hover {

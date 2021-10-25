@@ -8,19 +8,31 @@ export const CartContext = createContext();
 function CartProvider(props) {
     const [cartItem, setCartItem] = useState([]);
 
-    function onItemClick(data){
+    function onMinusClick(data) {
         const findProduct = cartItem.findIndex(dt => dt === data);
-        const quantity = cartItem[findProduct].quantity -= 1;
-        const price = cartItem[findProduct].price*quantity;
-        if(quantity===0){
-            const newProduct = cartItem.splice(cartItem[findProduct],1)
-            const newCartItem = cartItem.map(obj => newProduct.find(o=>o.name===obj.name) || obj);
-            setCartItem(newCartItem);
-        }
+        console.log("trừ nè")
+        cartItem[findProduct].quantity-=1;
+        if(cartItem[findProduct].quantity===0){
+            cartItem.splice(findProduct, 1)
+            setCartItem(cartItem.map(obj => obj === cartItem[findProduct] || obj));
+        } else {
+            cartItem[findProduct].price = cartItem[findProduct].quantity * cartItem[findProduct].price;
+            setCartItem(cartItem.map(obj => obj === cartItem[findProduct] || obj));
+        } 
+    }
+
+    function onAddClick(data) {
+        const findProduct = cartItem.findIndex(dt => dt === data);
+        cartItem[findProduct].quantity++;
+        console.log("cộng nè")
+        // if(cartItem[findProduct].quantity!==0) {
+        //     cartItem[findProduct].price = cartItem[findProduct].quantity * cartItem[findProduct].price;
+        //     setCartItem(cartItem.map(obj => obj === cartItem[findProduct] || obj));
+        // }
     }
 
     return (
-        <CartContext.Provider value={[cartItem,setCartItem, onItemClick]}>
+        <CartContext.Provider value={[cartItem,setCartItem, onMinusClick, onAddClick]}>
             {props.children}
         </CartContext.Provider>
     )

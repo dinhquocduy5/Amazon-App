@@ -4,7 +4,7 @@ import { CartContext } from '../components/Context/CartContext'
 import '../SASS/Checkout.scss'
 
 function Checkout() {
-    const [cartItem, setCartItem, onItemClick] = useContext(CartContext);
+    const [cartItem, onMinusClick, onAddClick] = useContext(CartContext);
     const itemPrice = cartItem.reduce((a,c)=>(a+(c.quantity*c.price)),0);
     const tax = (itemPrice * 0.05);
     const totalPrice = itemPrice + tax;
@@ -12,9 +12,16 @@ function Checkout() {
     const numberWithCommas = (number) => {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
     }
-    function handleMinusQuantity(data){
-        if(onItemClick){
-            onItemClick(data)
+
+    function handleMinusQuantity(data) {
+        if(onMinusClick){
+            onMinusClick(data)
+        }
+    }
+
+    function handleAddQuantity(data) {
+        if(onAddClick){
+            onAddClick(data)
         }
     }
     
@@ -39,7 +46,7 @@ function Checkout() {
                                 <td>
                                     <button className="btn-editQuantity" onClick={()=>handleMinusQuantity(data)}>-</button>
                                     <input className="text-quantity" type="text" value={data.quantity}/>
-                                    <button className="btn-editQuantity">+</button>
+                                    <button className="btn-editQuantity" onClick={()=>handleAddQuantity(data)}>+</button>
                                 </td>
                                 <td>{numberWithCommas(data.price)} VNĐ</td>
                             </tr>

@@ -8,9 +8,9 @@ import Aos from 'aos';
 import "aos/dist/aos.css"
 
 function Product(props) {
-    const [cartItem, setCartItem] = useContext(CartContext);
+    const [setCartItem] = useContext(CartContext);
 
-    const {id, title, price, image, description, } = props;
+    const {id, title, price, image,} = props;
 
     useEffect(()=>
         Aos.init({duration : 1500})

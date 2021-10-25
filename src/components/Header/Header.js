@@ -16,7 +16,7 @@ function Header() {
 
     const [searchItem, setSearchItem] = useContext(SearchContext);
 
-    const [cookies, setCookies, removeCookie] = useCookies(['userID']);
+    const [cookies, removeCookie] = useCookies(['userID']);
 
     let queryParameters = {
         userID : cookies.userID

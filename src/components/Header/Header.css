@@ -128,8 +128,6 @@
     background-color: #bbb;
 }
 
-
-
 .email-user {
     text-decoration: none;
     color: white;
@@ -141,4 +139,5 @@
 
 .username:hover .list-item {
     display: block;
+    margin-top: 1rem;
 }

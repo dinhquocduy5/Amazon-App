@@ -9,8 +9,10 @@ function ProductDetail(props) {
     const [product, setProduct]=useState([]);
     const [comment, setComment] = useState("");
     const [listComment, setListComment] = useState([]);
+    const [loadingPages, setLoadingPages] = useState([true]);
+    const [loadingComments, setLoadingComments] = useState([true]);
 
-    const [cartItem, setCartItem] = useContext(CartContext);
+    const [setCartItem] = useContext(CartContext);
 
     const [cookies] = useCookies(['userID']);
 
@@ -18,16 +20,26 @@ function ProductDetail(props) {
 
     const history = useHistory();
 
+    const loadPages = document.querySelector(".loader");
+    useEffect(()=>{
+        if(loadingPages===false) loadPages.className += (" hidden");
+    },[loadingPages])
+
     useEffect(()=>{
         async function fetchData(){
             const response = await axios.get(`https://do-an-nganh-nodejs.herokuapp.com/api/products/detail/${productID}`);
             setProduct(response.data);
+            setLoadingPages(false)
         }
         fetchData();
     },[productID]);
 
+    const loadComments = document.querySelector(".loader-comment");
     useEffect(()=>{
+        if(loadingComments===false) loadComments.className += (" hidden");
+    },[loadingComments])
 
+    useEffect(()=>{
         var requestOptions = {
             method: 'GET',
             redirect: 'follow'
@@ -35,7 +47,7 @@ function ProductDetail(props) {
 
         fetch(`https://do-an-nganh-nodejs.herokuapp.com/api/products/comment/${productID}`, requestOptions)
         .then(response => response.json())
-        .then(result => setListComment(result))
+        .then(result => setListComment(result), setLoadingComments(false))
         .catch(error => console.log('error', error));
     },[comment])
 
@@ -71,6 +83,11 @@ function ProductDetail(props) {
 
     return (
         <div className="wrapper-form">
+            <div class="loader">
+                <div class="outer"></div>
+                <div class="middle"></div>
+                <div class="inner"></div>
+            </div>
             <div className="form__pro-detail">
             <button className="back" onClick={handleBack}>Back</button>
             <div className="info-product">
@@ -92,6 +109,11 @@ function ProductDetail(props) {
         </div>
             <div className="wrapper-comment">
                 <div className="comments">
+                    <div class="loader-comment">
+                        <div class="outer"></div>
+                        <div class="middle"></div>
+                        <div class="inner"></div>
+                    </div>
                     <table>
                         {
                             listComment.map((data,index)=>

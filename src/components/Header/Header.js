@@ -1,11 +1,12 @@
-import {React, useContext} from 'react'
+import {React, useContext, useState} from 'react'
 import { Link } from 'react-router-dom'
+
 import "./Header.css"
+
 import SearchIcon from "@material-ui/icons/Search"
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import { CartContext } from '../Context/CartContext';
-import { SearchContext} from '../Context/SearchContext'
 
 import { useCookies } from 'react-cookie';
 
@@ -14,9 +15,9 @@ function Header() {
 
     const [cartItem] = useContext(CartContext);
 
-    const [searchItem, setSearchItem] = useContext(SearchContext);
+    const [searchItem, setSearchItem] = useState("");
 
-    const [cookies, removeCookie] = useCookies(['userID']);
+    const [cookies, setCookies, removeCookie] = useCookies(['userID']);
 
     let queryParameters = {
         userID : cookies.userID
@@ -30,6 +31,8 @@ function Header() {
         ,500);
     }
 
+    console.log(searchItem)
+
     return (
         <div className="header">
             {/*logo on the left */}
@@ -40,10 +43,10 @@ function Header() {
             </Link>
 
             {/*Search box */}
-            <div className="header__search">
-                <input type="text" className="header__searchBox" value={searchItem} onChange={(e)=>setSearchItem(e.target.value)}/>
+            <form action="/product/search" method="get" className="header__search">
+                <input name="q" type="text" className="header__searchBox" value={searchItem} onChange={(e)=>setSearchItem(e.target.value)}/>
                 <SearchIcon className="header__searchIcon" style={{ fontSize: 40 }} />
-            </div>
+            </form>
 
             {/* Links */}
             <div className="header__nav">

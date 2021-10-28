@@ -1,29 +1,26 @@
 import React, { useContext, useEffect, useState } from 'react'
+import Loading from '../components/Loading/Loading';
 import axios from 'axios';
 import { useHistory, useParams } from 'react-router';
 import '../SASS/ProductDetail.scss';
 import { CartContext } from '../components/Context/CartContext';
 import { useCookies } from 'react-cookie';
+import NumberWithCommas from '../components/NumberWithCommas';
 
 function ProductDetail(props) {
     const [product, setProduct]=useState([]);
     const [comment, setComment] = useState("");
     const [listComment, setListComment] = useState([]);
-    const [loadingPages, setLoadingPages] = useState([true]);
-    const [loadingComments, setLoadingComments] = useState([true]);
+    const [loadingPages, setLoadingPages] = useState(true);
+    const [loadingComment, setLoadingComment] = useState(false);
 
-    const [setCartItem] = useContext(CartContext);
+    const [cartItem, setCartItem] = useContext(CartContext);
 
     const [cookies] = useCookies(['userID']);
 
     const {productID} = useParams();
 
     const history = useHistory();
-
-    const loadPages = document.querySelector(".loader");
-    useEffect(()=>{
-        if(loadingPages===false) loadPages.className += (" hidden");
-    },[loadingPages])
 
     useEffect(()=>{
         async function fetchData(){
@@ -32,12 +29,7 @@ function ProductDetail(props) {
             setLoadingPages(false)
         }
         fetchData();
-    },[productID]);
-
-    const loadComments = document.querySelector(".loader-comment");
-    useEffect(()=>{
-        if(loadingComments===false) loadComments.className += (" hidden");
-    },[loadingComments])
+    },[]);
 
     useEffect(()=>{
         var requestOptions = {
@@ -47,9 +39,9 @@ function ProductDetail(props) {
 
         fetch(`https://do-an-nganh-nodejs.herokuapp.com/api/products/comment/${productID}`, requestOptions)
         .then(response => response.json())
-        .then(result => setListComment(result), setLoadingComments(false))
+        .then(result => {setLoadingComment(false); setListComment(result)})
         .catch(error => console.log('error', error));
-    },[comment])
+    },[loadingComment])
 
     const postComment = () =>{
         const getComment = document.getElementsByClassName("text");
@@ -69,7 +61,7 @@ function ProductDetail(props) {
 
         fetch(`https://do-an-nganh-nodejs.herokuapp.com/api/products/comment/${productID}`, requestOptions)
         .then(response => response.json())
-        .then(result => getComment.innerHtml = "" )
+        .then(result => {getComment.innerHtml = ""; setLoadingComment(true);})
         .catch(error => console.log('error', error));
     }
 
@@ -78,16 +70,17 @@ function ProductDetail(props) {
     }
 
     function onSetCartItem(){
-        setCartItem((prevItem)=>[...prevItem,{image : product.image, name : product.name, price : product.price, quantity : 1}]);
+        const findIndex = cartItem.find((dt)=>dt.name === product.name);
+        if(findIndex) {
+            findIndex.quantity+=1;
+        } else {
+            setCartItem((prevItem)=>[...prevItem,{image : product.image, name : product.name, price : product.price, quantity : 1}]);
+        }
     }
 
     return (
         <div className="wrapper-form">
-            <div class="loader">
-                <div class="outer"></div>
-                <div class="middle"></div>
-                <div class="inner"></div>
-            </div>
+            {loadingPages===true ? (<Loading />) : null}
             <div className="form__pro-detail">
             <button className="back" onClick={handleBack}>Back</button>
             <div className="info-product">
@@ -108,30 +101,26 @@ function ProductDetail(props) {
             </div>
         </div>
             <div className="wrapper-comment">
+                <h2 className="title-comment">{listComment.length} comments {product.name}</h2>
                 <div className="comments">
-                    <div class="loader-comment">
-                        <div class="outer"></div>
-                        <div class="middle"></div>
-                        <div class="inner"></div>
-                    </div>
+                    {loadingComment === true ? <Loading className="loading" /> : null}
                     <table>
                         {
                             listComment.map((data,index)=>
                             {
                                 return (
-                                <tr key={index}>
+                                <tr className="row-comment" key={index}>
                                     <td><img className="avatar" src={data.user.avatar} alt="" /></td>
                                     <td><strong>{data.user.email}</strong><p className="content">{data.content}</p><span className="date-time">{data.commentDate}</span></td>
                                 </tr>
                                 );
-                            })
+                            }) 
                         }
-                        
                     </table>
                 </div>
                 <div className="form-input" >
                     <textarea className="text" placeholder="Text something..." onChange={e => setComment(e.target.value)}></textarea>
-                    <button className="comment" type="submit" onClick={postComment} >Comment</button>
+                    <button className="btn-comment" type="submit" onClick={postComment} >Comment</button>
                 </div>
             </div>
         </div>

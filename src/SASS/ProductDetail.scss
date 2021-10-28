@@ -9,6 +9,14 @@
     padding-bottom: 50px;
 }
 
+.title-comment {
+    margin-bottom: 1rem;
+}
+
+.row-comment {
+    border: none;
+}
+
 .back {
     width: 80px;
     height: 30px;
@@ -130,13 +138,13 @@
     border-radius: 10px;
 }
 
-.wrapper-comment .comment {
+.wrapper-comment .btn-comment {
     margin-top: 10px;
     width: 100px;
     height: 50px;
     border: none;
     outline: none;
-    background-color: #63D471;
+    background-color: #1E8E04;
     color: #f1f1f1;
     border-radius: 5px;
     cursor: pointer;
@@ -163,55 +171,8 @@
     background: #555;
   }
 
-.hidden {
-    display: none;
-}
-
-.loader, .loader-comment {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    margin: auto;
-}
-  
-  .outer,
-  .middle,
-  .inner {
-    border: 3px solid transparent;
-    border-top-color: #3cefff;
-    border-right-color: #3cefff;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
+  .loading {
+      position: relative;
+      z-index: 999;
   }
   
-  .outer {
-    width: 3.5em;
-    height: 3.5em;
-    margin-left: -1.75em;
-    margin-top: -1.75em;
-    animation: spin 2s linear infinite;
-  }
-  
-  .middle {
-    width: 2.1em;
-    height: 2.1em;
-    margin-left: -1.05em;
-    margin-top: -1.05em;
-    animation: spin 1.75s linear reverse infinite;
-  }
-  
-  .inner {
-    width: 0.8em;
-    height: 0.8em;
-    margin-left: -0.4em;
-    margin-top: -0.4em;
-    animation: spin 1.5s linear infinite;
-  }
-  
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }

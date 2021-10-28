@@ -12,15 +12,14 @@ import Signup from './pages/SignUp'
 import Checkout from './pages/Checkout';
 
 import CartProvider from './components/Context/CartContext';
-import SearchProvider from './components/Context/SearchContext';
 import ProductDetail from './pages/ProductDetail';
 import Footer from './components/Footer/Footer';
 import EditProfile from './pages/EditProfile';
+import SearchProduct from './components/SearchProduct/SearchProduct';
 
 
 function App() {
   return (
-    <SearchProvider>
       <CartProvider>
         <Router>
           <div className="App">
@@ -28,6 +27,11 @@ function App() {
               <Route path="/checkout">
                 <Header />
                 <Checkout />
+              </Route>
+              <Route exact path="/product/search" >
+                <Header />
+                <SearchProduct />
+                <Footer />
               </Route>
               <Route exact path="/product/:productID" >
                 <Header />
@@ -52,7 +56,6 @@ function App() {
           </div>
         </Router>
     </CartProvider>
-    </SearchProvider>
     
   );
 }

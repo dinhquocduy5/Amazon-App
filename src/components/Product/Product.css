@@ -13,7 +13,7 @@
     display: grid;
     grid-row-gap: 10px ;
     width :200px;
-    height: auto;
+    max-height: 400px;
     margin-left: 4.8rem;
 }
 
@@ -64,6 +64,7 @@
     grid-template-columns: repeat(4,1fr);
     grid-column-gap: 50px;
     grid-row-gap: 100px;
+    min-height: 940px;
 }
 
 
@@ -80,62 +81,48 @@
 }
 
 .listProduct {
+    padding-bottom: 2rem;
     min-height: 1024px;
     height:auto;
     background: rgb(145,26,182);
     background: radial-gradient(circle, rgba(145,26,182,0.9867297260701156) 0%, rgba(111,26,255,0.7066176812521884) 100%);
 }
 
-.hidden {
-    display: none;
+.comments table {
+    width: 100%;
 }
 
-.loader {
-    position: absolute;
+.row-comment {
+    margin: 0.5rem 0 1rem -1rem ;
+    border-bottom: 1px solid #aaa;
     width: 100%;
-    height: 100%;
+}
+
+.paginationBtns {
+    width: 100%;
+    height: 40px;
+    list-style: none;
+    display: flex;
+    justify-content: center;
     margin: auto;
 }
-  
-  .outer,
-  .middle,
-  .inner {
-    border: 3px solid transparent;
-    border-top-color: #3cefff;
-    border-right-color: #3cefff;
-    border-radius: 50%;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-  }
-  
-  .outer {
-    width: 3.5em;
-    height: 3.5em;
-    margin-left: -1.75em;
-    margin-top: -1.75em;
-    animation: spin 2s linear infinite;
-  }
-  
-  .middle {
-    width: 2.1em;
-    height: 2.1em;
-    margin-left: -1.05em;
-    margin-top: -1.05em;
-    animation: spin 1.75s linear reverse infinite;
-  }
-  
-  .inner {
-    width: 0.8em;
-    height: 0.8em;
-    margin-left: -0.4em;
-    margin-top: -0.4em;
-    animation: spin 1.5s linear infinite;
-  }
-  
-  @keyframes spin {
-    to {
-      transform: rotate(360deg);
-    }
-  }
 
+.paginationBtns a {
+    padding: 10px;
+    margin: 8px;
+    border-radius: 4px;
+    border: 1px solid #A882DD;
+    color: white;
+    cursor: pointer;
+    transition: 300ms all;
+}
+
+.paginationBtns a:hover {
+    color: red;
+    background-color: #A882DD;
+}
+
+.paginationActive a {
+    color: red;
+    background-color: #A882DD;
+}

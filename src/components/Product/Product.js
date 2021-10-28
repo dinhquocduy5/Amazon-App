@@ -6,22 +6,24 @@ import { Link } from 'react-router-dom';
 
 import Aos from 'aos';
 import "aos/dist/aos.css"
+import NumberWithCommas from '../NumberWithCommas';
 
 function Product(props) {
-    const [setCartItem] = useContext(CartContext);
+    const [cartItem, setCartItem] = useContext(CartContext);
 
-    const {id, title, price, image,} = props;
+    const {id, title, price, image} = props;
 
     useEffect(()=>
         Aos.init({duration : 1500})
     ,[]);
 
-    const numberWithCommas = (number) => {
-        return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g,",");
-    }
-
     function onSetCartItem(){
-        setCartItem((prevItem)=>[...prevItem,{image, name : title, price, quantity : 1}]);
+        const findIndex = cartItem.find((dt)=>dt.name === title);
+        if(findIndex) {
+            findIndex.quantity+=1;
+        } else {
+            setCartItem((prevItem)=>[...prevItem,{image, name : title, price, quantity : 1}]);
+        }
     }
 
     return ( 
@@ -31,7 +33,7 @@ function Product(props) {
                 {title}
             </Link>
             <p className="product__price">
-                <strong>{numberWithCommas(price)}</strong>
+                <strong>{NumberWithCommas(price)}</strong>
                 <small> VNĐ</small>
             </p>
             <div className="product__addCart">

@@ -44,6 +44,8 @@ function EditProfile(props) {
         
     },[savechanges]);
 
+    const successUpdate = document.getElementById("success");
+
     function handleSaveChanges(e) {
         e.preventDefault();
         var myHeaders = new Headers();
@@ -67,10 +69,9 @@ function EditProfile(props) {
 
         fetch('https://do-an-nganh-nodejs.herokuapp.com/api/user/info', requestOptions)
         .then(response => response.json())
-        .then(result => setSaveChanges(true))
+        .then(result => {setSaveChanges(true); setTimeout(()=>successUpdate.show(),1500) })
         .catch(error => console.log('error', error));
     }
-        
 
     return (
         <div className="form-edit">
@@ -112,11 +113,11 @@ function EditProfile(props) {
                     </div>
                     <div className="ingredient-info">
                         <label className="title-of-ingredient">Address</label>
-                        <input className="input-info" type="text" value={infoUser.address === ""? address : infoUser.address} onChange={e=>setAddress(e.target.value)}  />
+                        <input className="input-info" type="text" value={infoUser.address === ""? address : infoUser.address} onChange={e=>{address===null ? setAddress(infoUser.address) : setAddress(e.target.value)}}  />
                     </div>
-                    <button type="submit" className="save-changes">Save Changes</button>
+                    <dialog id="success">Update Successful! </dialog>
+                    <button type="submit" className="save-changes" >Save Changes</button>
                 </form>
-                
             </div>
         </div>
     )

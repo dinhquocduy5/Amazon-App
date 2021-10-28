@@ -1,0 +1,11 @@
+.wrapper-listPro {
+    width: 100%;
+    padding: 100px;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    grid-column-gap: 50px;
+    grid-row-gap: 100px;
+    min-height: 1024px;
+    background: rgb(145,26,182);
+    background: radial-gradient(circle, rgba(145,26,182,0.9867297260701156) 0%, rgba(111,26,255,0.7066176812521884) 100%);
+}

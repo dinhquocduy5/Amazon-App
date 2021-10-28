@@ -2,22 +2,26 @@ import React from 'react'
 import {useContext, useState, useEffect} from 'react'
 import Product from './Product'
 import './Product.css'
-import axios from 'axios'
+import Loading from '../Loading/Loading'
+import ReactPaginate from 'react-paginate'
 
-import { SearchContext} from '../Context/SearchContext';
+import axios from 'axios'
 
 function ListProduct() {
     const [movies, setMovies] = useState([]);
     const [sortType, setSortType] = useState('');
     const [defaultArray, setDefaultArray] = useState([])
     const [loading, setLoading] = useState(true);
+    const [pageNumber, setPageNumber] = useState(0);
 
-    const [searchItem] = useContext(SearchContext);
+    const moviesPerPage = 8
+    const pageVisited = pageNumber*moviesPerPage;
+    
+    const pageCount = Math.ceil(movies.length / moviesPerPage);
 
-    var load = document.querySelector(".loader");
-    useEffect(()=>{
-        if(loading===false) load.className += (" hidden");
-    },[loading])
+    const pageChange = ({selected}) => {
+        setPageNumber(selected);
+    }
 
     useEffect(()=>{
         async function fetchData(){
@@ -32,7 +36,6 @@ function ListProduct() {
             }
             fetchData();   
         }
-       
     ,[]);
 
     useEffect(() => {
@@ -46,19 +49,12 @@ function ListProduct() {
 
             setMovies(sorted)
         }
-
         sortArray(sortType)
     },[sortType])
-
-
     
     return (
         <div className="listProduct">
-            <div class="loader">
-                <div class="outer"></div>
-                <div class="middle"></div>
-                <div class="inner"></div>
-            </div>
+            {loading===true ? (<Loading />) : null}
             <div className="form__filter">
                 <form action="/">
                     <label name="Sort by name" className="sort">Sort by name:</label>
@@ -77,25 +73,32 @@ function ListProduct() {
             </div>
             <div className="wrap__list-product">
                 {
-                    movies.filter((data) => {
-                        if(searchItem === ""){
-                            return data;
-                        } else if(data.name.toLowerCase().includes(searchItem.toLowerCase())){
-                            return data;
-                        }
-                    })
-                    .map((data, index) => {
+                    movies
+                    .slice(pageVisited, pageVisited + moviesPerPage)
+                    .map((movie, index) => {
                         return <Product
-                            key={index}
-                            id = {data._id}
-                            title = {data.name}
-                            price = {data.price}
-                            image = {data.image}
-                            description = {data.description}
-                            />
-                    })          
+                                key={index}
+                                id = {movie._id}
+                                title = {movie.name}
+                                price = {movie.price}
+                                image = {movie.image}
+                                description = {movie.description}
+                        />
+                    })
+                
                 }
             </div>
+            <ReactPaginate 
+                 previousLabel={"Previous"}
+                 nextLabel={"Next"}
+                 pageCount={pageCount}
+                 onPageChange={pageChange}
+                 containerClassName={"paginationBtns"}
+                 previousLinkClassName={"previousBtn"}
+                 nextLinkClassName={"nextBtn"}
+                 disabledClassName={"paginationDisabled"}
+                 activeClassName={"paginationActive"}
+                />
         </div>
     )
 }

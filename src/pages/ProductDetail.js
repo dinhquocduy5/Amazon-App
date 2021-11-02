@@ -16,7 +16,7 @@ function ProductDetail(props) {
 
     const [cartItem, setCartItem] = useContext(CartContext);
 
-    const [cookies] = useCookies(['userID']);
+    const [cookies, setCookies] = useCookies(['userID']);
 
     const {productID} = useParams();
 
@@ -44,25 +44,29 @@ function ProductDetail(props) {
     },[loadingComment])
 
     const postComment = () =>{
-        const getComment = document.getElementsByClassName("text");
-        var myHeaders = new Headers();
-        myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+        if(!cookies.userID){
+            history.push("/signIn");
+        } else {
+            const getComment = document.getElementsByClassName("text");
+            var myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
 
-        var urlencoded = new URLSearchParams();
-        urlencoded.append("content", comment);
-        urlencoded.append("userID", cookies.userID);
+            var urlencoded = new URLSearchParams();
+            urlencoded.append("content", comment);
+            urlencoded.append("userID", cookies.userID);
 
-        var requestOptions = {
-            method: 'POST',
-            headers: myHeaders,
-            body: urlencoded,
-            redirect: 'follow'
-        };
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: urlencoded,
+                redirect: 'follow'
+            };
 
-        fetch(`https://do-an-nganh-nodejs.herokuapp.com/api/products/comment/${productID}`, requestOptions)
-        .then(response => response.json())
-        .then(result => {getComment.innerHtml = ""; setLoadingComment(true);})
-        .catch(error => console.log('error', error));
+            fetch(`https://do-an-nganh-nodejs.herokuapp.com/api/products/comment/${productID}`, requestOptions)
+            .then(response => response.json())
+            .then(result => {getComment.innerHtml = ""; setLoadingComment(true);})
+            .catch(error => console.log('error', error));
+        }
     }
 
     function handleBack(){

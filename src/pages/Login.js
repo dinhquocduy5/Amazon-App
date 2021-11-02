@@ -33,7 +33,6 @@ function Login() {
         fetch("https://do-an-nganh-nodejs.herokuapp.com/api/auth/login", requestOptions)
         .then(response => response.json())
         .then(result => {
-            console.log(result)
             const success = document.querySelector('.login-success');
             const fail = document.querySelector('.login-fail');
             const empty = document.querySelector('.empty-email');
@@ -46,8 +45,8 @@ function Login() {
                     if(fail.classList.contains("active")) fail.classList.remove("active");
                     if(empty.classList.contains("active")) empty.classList.remove("active");
                     success.className += " active"
-                    setCookies('userID', result.user._id,{ path: '/' });
-                    setCookies('email', result.user.email,{ path: '/' });
+                    setCookies('userID', result.user._id);
+                    setCookies('email', result.user.email);
                     setTimeout(()=>
                         history.push("/")
                     ,1000);
